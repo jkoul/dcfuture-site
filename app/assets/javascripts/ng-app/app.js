@@ -1,8 +1,7 @@
 'use strict';
 
 (function() {
-  angular
-  .module('dcfuture', [
+  angular.module('dcfuture', [
     'ngAnimate',
     'ui.router',
     'ngResource',
@@ -11,7 +10,7 @@
     // 'checklist-model'
 
     // in-app dependencies
-    // 'blog',
+    // 'blog'
     // 'legitrack'
   ])
 
@@ -38,5 +37,22 @@
       url: '/about',
       templateUrl: 'home/about.html'
     })
+
+    .state("blog", {
+      abstract: true,
+      url: '/blog',
+      templateUrl: 'blog/layout.html'
+    })
+
+      .state("blog.posts", {
+        url: '',
+        templateUrl: 'blog/posts/index.html',
+        controllerAs: 'BlogCtrl'
+      })
+
+      .state("blog.posts.show", {
+        url: '/blog/posts/:id',
+        templateUrl: 'blog/posts/show.html'
+      })
   }
 })();
